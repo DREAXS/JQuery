@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|01</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <!-- JQUERY -->
+    <script>
+      // Sayfa tamamen yüklendiğinde çalışacak olan jQuery fonksiyonu
+      $(document).ready(function () {
+        // "p" etiketi olan her öğeye tıklama olayı ekliyoruz
+        $("p").click(function () {
+          // Tıklanan "p" öğesini gizle
+          $(this).hide();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>Jquery0</p>
+    <p>Jquery1</p>
+    <p>Jquery2</p>
+    <!-- JAVASCRIPT -->
+    <script>
+      var obj = document.querySelectorAll("p");
+      // Döngü ile her bir "p" etiketine tıklama olayını ekliyoruz
+      for (var i = 0; i < obj.length; i++) {
+        // Her bir "p" öğesi için tıklama işlevi ekliyoruz
+        obj[i].onclick = function () {
+          // Tıklanan paragrafı gizliyoruz
+          this.style.display = "none";
+        };
+      }
+    </script>
+  </body>
+</html>
