@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|09</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .box {
+        width: 300px;
+        padding: 20px;
+        background-color: #4caf50;
+        color: white;
+        margin: 10px;
+        display: none; /* Başlangıçta gizli */
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .animateBox {
+        width: 200px;
+        height: 200px;
+        background-color: #ff5722;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>jQuery Slide ve Animate Efektleri</h2>
+
+    <!-- slideDown() Efekti -->
+    <button id="slideDownButton">Slide Down</button>
+    <div class="box" id="slideDownBox">
+      <p>Slide Down ile açılan içerik!</p>
+    </div>
+
+    <!-- slideUp() Efekti -->
+    <button id="slideUpButton">Slide Up</button>
+    <div class="box" id="slideUpBox">
+      <p>Slide Up ile gizlenen içerik!</p>
+    </div>
+
+    <!-- slideToggle() Efekti -->
+    <button id="slideToggleButton">Slide Toggle</button>
+    <div class="box" id="slideToggleBox">
+      <p>Slide Toggle ile gizlenip gösterilen içerik!</p>
+    </div>
+
+    <!-- animate() Efekti -->
+    <button id="animateButton">Animate</button>
+    <div class="animateBox" id="animateBox"></div>
+
+    <script>
+      $(document).ready(function () {
+        // slideDown() Efekti
+        $("#slideDownButton").click(function () {
+          $("#slideDownBox").slideDown(1000); // 1 saniye içinde içerik aşağıya kayarak görünür olur
+        });
+
+        // slideUp() Efekti
+        $("#slideUpButton").click(function () {
+          $("#slideUpBox").slideUp(1000); // 1 saniye içinde içerik yukarıya kayarak gizlenir
+        });
+
+        // slideToggle() Efekti
+        $("#slideToggleButton").click(function () {
+          $("#slideToggleBox").slideToggle(1000); // İçerik görünüyorsa gizler, gizliyse gösterir
+        });
+
+        // animate() Efekti
+        $("#animateButton").click(function () {
+          $("#animateBox").animate(
+            {
+              width: "400px", // Genişlik 200px'den 400px'e çıkar
+              height: "400px", // Yükseklik 200px'den 400px'e çıkar
+              opacity: 0.5, // Opaklık %50'ye düşer
+            },
+            1500, // Animasyon süresi: 1.5 saniye
+            function () {
+              alert("Animasyon tamamlandı!"); // Animasyon tamamlandığında bir mesaj gösterilir
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

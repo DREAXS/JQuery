@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Animasyon Örnekleri</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #3498db;
+        margin-top: 50px;
+        position: relative;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startButton">Animasyonu Başlat</button>
+    <button id="stopButton">Animasyonu Durdur</button>
+
+    <div class="box" id="box"></div>
+
+    <script>
+      $(document).ready(function () {
+        // Animasyonu başlatan buton
+        $("#startButton").click(function () {
+          $("#box")
+            .stop(true, true) // Önceki animasyonları durdur ve temizle
+            .animate({ left: "500px" }, 2000) // 2 saniyede sağa kayma
+            .animate({ height: "300px" }, 1000) // 1 saniyede yüksekliği artırma
+            .animate({ width: "400px" }, 1000) // 1 saniyede genişliği artırma
+            .animate({ opacity: 0.5 }, 1000, function () {
+              // 1 saniyede opaklık %50 yapma
+              alert("Animasyon tamamlandı!"); // Callback: Animasyon tamamlandığında bu mesaj gösterilir
+            });
+        });
+
+        // Animasyonu durduran buton
+        $("#stopButton").click(function () {
+          $("#box").stop(true, true); // Animasyonu hemen durdurur ve temizler
+          alert("Animasyon durduruldu.");
+        });
+      });
+    </script>
+  </body>
+</html>

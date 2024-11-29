@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|08</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      /* Genel stil ayarları */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      /* Gösterilecek alanın başlangıçtaki gizlilik durumu */
+      #fadeContent {
+        display: none; /* Başlangıçta gizli */
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+
+      /* Butonların stilini ayarlama */
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>jQuery Fade Efektleri</h2>
+
+    <!-- fadeIn efekti -->
+    <button id="fadeInButton">Fade In</button>
+
+    <!-- fadeOut efekti -->
+    <button id="fadeOutButton">Fade Out</button>
+
+    <!-- fadeToggle efekti -->
+    <button id="fadeToggleButton">Fade Toggle</button>
+
+    <!-- Efektin uygulanacağı içerik -->
+    <div id="fadeContent">
+      <p>Bu içerik, fade efekti ile görünür/gizlenir.</p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // fadeIn() efekti
+        $("#fadeInButton").click(function () {
+          $("#fadeContent").fadeIn(1000); // 1 saniye içinde içerik görünür hale gelir
+        });
+
+        // fadeOut() efekti
+        $("#fadeOutButton").click(function () {
+          $("#fadeContent").fadeOut(1000); // 1 saniye içinde içerik gizlenir
+        });
+
+        // fadeToggle() efekti
+        $("#fadeToggleButton").click(function () {
+          $("#fadeContent").fadeToggle(1000); // İçerik görünüyorsa gizler, gizliyse gösterir
+        });
+      });
+    </script>
+  </body>
+</html>

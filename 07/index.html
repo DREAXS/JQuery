@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|07</title>
+    <!-- jQuery kütüphanesini dahil ediyoruz -->
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      /* Genel stil ayarları */
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Başlangıçta gizlenecek içerik */
+      #content {
+        display: none; /* İçerik başlangıçta gizli olacak */
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+
+      /* Buton stili */
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      /* Buton hover efekti */
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- İçeriği gösteren buton -->
+    <button id="showButton">İçeriği Göster</button>
+
+    <!-- İçeriği gizleyen buton -->
+    <button id="hideButton">İçeriği Gizle</button>
+
+    <!-- İçeriği toggle eden buton -->
+    <button id="toggleButton">İçeriği Toggle Et</button>
+
+    <!-- Gösterilecek içerik -->
+    <div id="content">
+      <h2>Bu içerik jQuery ile gösterildi veya gizlendi.</h2>
+      <p>
+        İçerik burada yer alır. "show()", "hide()" ve "toggle()" metodları ile
+        içerik görünür hale getirilebilir veya gizlenebilir.
+      </p>
+    </div>
+
+    <script>
+      // Sayfa tamamen yüklendikten sonra çalışacak kod
+      $(document).ready(function () {
+        // Göster butonunun işlevi
+        $("#showButton").click(function () {
+          $("#content").show(); // İçeriği göster
+        });
+
+        // Gizle butonunun işlevi
+        $("#hideButton").click(function () {
+          $("#content").hide(); // İçeriği gizle
+        });
+
+        // Toggle butonunun işlevi
+        $("#toggleButton").click(function () {
+          $("#content").toggle(); // İçeriği toggle et (göster/gizle)
+        });
+      });
+    </script>
+  </body>
+</html>
