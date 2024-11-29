@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|04</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../00/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <h2>jQuery Event Metodları</h2>
+
+    <!-- .click() -->
+    <button id="clickButton">Tıklayın</button>
+
+    <!-- .dblclick() -->
+    <div
+      id="dblclickDiv"
+      style="
+        width: 200px;
+        height: 100px;
+        background-color: lightgreen;
+        text-align: center;
+        line-height: 100px;
+      "
+    >
+      Çift Tıklayın
+    </div>
+
+    <!-- .hover() -->
+    <div id="hoverElement">Hover Üzerine Gel</div>
+
+    <!-- .keydown() ve .keyup() -->
+    <input
+      type="text"
+      id="keyInput"
+      placeholder="Bir tuşa basın veya bırakın"
+    />
+
+    <!-- .change() -->
+    <select id="selectBox">
+      <option value="1">Seçenek 1</option>
+      <option value="2">Seçenek 2</option>
+      <option value="3">Seçenek 3</option>
+    </select>
+
+    <!-- .submit() -->
+    <form id="sampleForm">
+      <input type="text" id="formInput" placeholder="Formu doldurun" />
+      <button type="submit">Gönder</button>
+    </form>
+
+    <!-- .focus() ve .blur() -->
+    <input type="text" id="focusElement" placeholder="Odaklan ve kaybol!" />
+
+    <!-- Sonuçları görüntüleyeceğimiz bir alan -->
+    <div id="result"></div>
+
+    <script>
+      $(document).ready(function () {
+        // .click() - Butona tıklama olayı
+        $("#clickButton").click(function () {
+          $("#result").text("Butona tıklandı!");
+        });
+
+        // .dblclick() - Div'e çift tıklama olayı
+        $("#dblclickDiv").dblclick(function () {
+          $("#result").text("Div'e çift tıklandı!");
+        });
+
+        // .hover() - Hover üzerine gelme olayı
+        $("#hoverElement").hover(
+          function () {
+            $(this).css("background-color", "lightcoral");
+            $("#result").text("Mouse hover etti!");
+          },
+          function () {
+            $(this).css("background-color", "lightblue");
+            $("#result").text("Mouse hover'dan çıktı!");
+          }
+        );
+
+        // .keydown() ve .keyup() - Klavye tuşlarına basılınca veya bırakılınca
+        $("#keyInput")
+          .keydown(function (event) {
+            $("#result").text("Tuşa basıldı: " + event.key);
+          })
+          .keyup(function (event) {
+            $("#result").text("Tuş bırakıldı: " + event.key);
+          });
+
+        // .change() - Select box değeri değiştiğinde
+        $("#selectBox").change(function () {
+          var selectedOption = $(this).val();
+          $("#result").text("Seçilen seçenek: " + selectedOption);
+        });
+
+        // .submit() - Form gönderildiğinde
+        $("#sampleForm").submit(function (event) {
+          event.preventDefault(); // Formun gönderilmesini engeller
+          $("#result").text("Form gönderildi!");
+        });
+
+        // .focus() ve .blur() - Input odaklanınca ve kaybolunca
+        $("#focusElement")
+          .focus(function () {
+            $(this).css("border", "2px solid blue");
+            $("#result").text("Odaklanıldı!");
+          })
+          .blur(function () {
+            $(this).css("border", "1px solid gray");
+            $("#result").text("Odak kayboldu!");
+          });
+      });
+    </script>
+  </body>
+</html>

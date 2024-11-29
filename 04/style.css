@@ -1,0 +1,18 @@
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+#inputElement {
+  margin-top: 10px;
+}
+#hoverElement {
+  width: 150px;
+  height: 150px;
+  background-color: lightblue;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 150px;
+}
+#focusElement {
+  margin-top: 10px;
+}

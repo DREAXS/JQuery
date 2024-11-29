@@ -1,0 +1,96 @@
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: 28px;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 20px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify;
+  padding: 0 15px;
+}
+
+p strong {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+p em {
+  font-style: italic;
+  color: #2ecc71;
+}
+
+h1,
+h2,
+h3,
+p {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+input[type="text"] {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+}
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+#container .box {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid black;
+}
+#message {
+  margin-top: 20px;
+  color: green;
+}
+#focusButton {
+  padding: 10px 20px;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+}
+#focusButton.clicked {
+  background-color: orange;
+}

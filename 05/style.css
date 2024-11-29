@@ -1,0 +1,41 @@
+#counterDiv {
+  width: 400px;
+  height: 100px;
+  background-color: lightblue;
+  text-align: center;
+  line-height: 100px;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#mouseenterDiv,
+#mouseleaveDiv,
+#animateDiv {
+  width: 250px;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#mouseenterDiv {
+  background-color: lightgreen;
+}
+
+#mouseleaveDiv {
+  background-color: lightcoral;
+}
+
+#animateDiv {
+  background-color: lightyellow;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+}

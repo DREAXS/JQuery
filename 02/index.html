@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|02</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../00/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Element Seçici Örneği -->
+    <p>Bu bir paragraftır.</p>
+    <p>İkinci paragraf.</p>
+
+    <!-- ID Seçici Örneği -->
+    <button id="changeTextButton">Metni Değiştir</button>
+
+    <!-- Class Seçici Örneği -->
+    <p class="highlight">Bu paragrafa vurgu yapılmış.</p>
+    <p class="highlight">Bu da bir vurgu örneği.</p>
+
+    <!-- Attribute Seçici Örneği -->
+    <input type="text" value="Bu bir input alanıdır" id="myInput" />
+    <input type="text" value="Bir başka input" class="myInputClass" />
+
+    <!-- Child ve Descendant Seçici Örnekleri -->
+    <div id="container">
+      <ul>
+        <li>Birinci Liste Elemanı</li>
+        <li>İkinci Liste Elemanı</li>
+        <li>Üçüncü Liste Elemanı</li>
+      </ul>
+    </div>
+
+    <div id="message"></div>
+    <!-- Mesaj görüntülenecek yer -->
+
+    <script>
+      $(document).ready(function () {
+        // **Element Seçici**
+        $("p").click(function () {
+          $(this).css("color", "blue");
+        });
+
+        // **ID Seçici**
+        $("#changeTextButton").click(function () {
+          $("#message").text("Butona tıkladınız!").show();
+        });
+
+        // **Class Seçici**
+        $(".highlight").click(function () {
+          $(this).css("color", "red");
+        });
+
+        // **Attribute Seçici**
+        $("#changeTextButton").click(function () {
+          $('[type="text"]').val("Yeni bir değer!");
+        });
+
+        // **Child Seçici**
+        $("#changeTextButton").click(function () {
+          $("#container > ul > li").css("font-weight", "bold");
+        });
+
+        // **Descendant Seçici**
+        $("#container li").hover(
+          function () {
+            $(this).css("background-color", "lightblue");
+          },
+          function () {
+            $(this).css("background-color", "white");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

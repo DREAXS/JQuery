@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|05</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../00/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <h2>jQuery Olayları ve Animasyon</h2>
+
+    <!-- Sayacı arttırmak için tıklanacak div -->
+    <div id="counterDiv">Tıklayarak Sayacı Artır</div>
+
+    <!-- Mouse Enter -->
+    <div id="mouseenterDiv">Mouse ile Üzerine Gel</div>
+
+    <!-- Mouse Leave -->
+    <div id="mouseleaveDiv">Mouse'dan Ayrıl</div>
+
+    <!-- Animate -->
+    <div id="animateDiv">Animasyonu Başlat</div>
+
+    <!-- Sayacı gösterecek olan div -->
+    <div id="result">Sayı: 0</div>
+
+    <script>
+      $(document).ready(function () {
+        // Başlangıçta sayaç değeri
+        let counter = 0;
+
+        // #counterDiv'e tıklanınca sayacı artır
+        $("#counterDiv").click(function () {
+          counter++; // Sayaç değerini bir artır
+          $("#result").text("Sayı: " + counter); // Yeni sayıyı #result div'inde göster
+        });
+
+        // #mouseenterDiv üzerine mouse geldiğinde
+        $("#mouseenterDiv").mouseenter(function () {
+          $(this).css("background-color", "lightseagreen");
+          $("#result").text("Mouse div üzerine geldi!");
+        });
+
+        // #mouseleaveDiv üzerinde mouse ayrıldığında
+        $("#mouseleaveDiv").mouseleave(function () {
+          $(this).css("background-color", "lightcoral");
+          $("#result").text("Mouse div'den ayrıldı!");
+        });
+
+        // #animateDiv öğesine tıklanarak animasyon başlat
+        $("#animateDiv").click(function () {
+          $("#result").text("Animasyon Başladı!");
+          $(this).animate(
+            {
+              width: "300px",
+              height: "300px",
+              opacity: 0.5,
+            },
+            1000, // Animasyon süresi 1000 milisaniye (1 saniye)
+            function () {
+              $(this).css("background-color", "yellow");
+              $("#result").text("Animasyon Tamamlandı!");
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

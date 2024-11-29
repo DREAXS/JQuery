@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|03</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../00/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Focus Örneği -->
+    <label for="name">Adınızı Girin:</label>
+    <input type="text" id="name" placeholder="Adınızı buraya yazın" />
+    <br />
+
+    <!-- Has() Örneği -->
+    <div id="container">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3 (içinde <span>span etiketi var</span>)</div>
+    </div>
+    <br />
+
+    <!-- Contains() Örneği -->
+    <p id="text">Bu bir test metnidir.</p>
+    <p>Diğer metinalanı</p>
+
+    <button id="focusButton">Inputa odaklanır</button>
+
+    <div id="message"></div>
+
+    <script>
+      $(document).ready(function () {
+        // **focus()**: Input alanına tıklandığında arka plan rengini değiştir
+        $("#name").focus(function () {
+          $(this).css("background-color", "lightblue");
+          $("#message")
+            .text("Input alanına odaklandınız!")
+            .css("color", "blue");
+        });
+
+        // **blur()**: Input alanından çıkıldığında arka plan rengini normale döndür
+        $("#name").blur(function () {
+          $(this).css("background-color", "");
+          $("#message").text("Input alanından çıkıldı.").css("color", "green");
+        });
+
+        // **has()**: "container" div'inde, içinde <span> bulunan box'ı vurgula
+        $("#container .box").has("span").css("border", "2px solid red");
+
+        // **contains()**: İçinde "test" kelimesi bulunan <p> öğesini vurgula
+        $('p:contains("test")').css("color", "green");
+
+        // **this**: Butona tıklanınca butonun rengini değiştir ve input alanına odaklan
+        $("#focusButton").click(function () {
+          $(this).addClass("clicked");
+          $("#name").focus(); // Input alanına odaklan
+        });
+      });
+    </script>
+  </body>
+</html>
