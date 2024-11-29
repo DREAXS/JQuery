@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|12</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        margin-top: 20px;
+      }
+
+      #infoBox {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ecf0f1;
+        border: 1px solid #bdc3c7;
+      }
+
+      button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      .input-box {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #bdc3c7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery .val(), .attr(), .text(), .html() Kullanımı</h1>
+
+    <div class="container">
+      <button id="getTextButton">Metni Göster (text())</button>
+      <button id="getHTMLButton">HTML'yi Göster (html())</button>
+      <button id="getValButton">Değeri Göster (val())</button>
+      <button id="getAttrButton">Atributu Göster (attr())</button>
+
+      <div class="input-box">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" value="Alper" />
+      </div>
+
+      <div class="input-box">
+        <label for="color">Renk Seç:</label>
+        <select id="color">
+          <option value="red">Kırmızı</option>
+          <option value="green">Yeşil</option>
+          <option value="blue">Mavi</option>
+        </select>
+      </div>
+
+      <div id="infoBox">
+        <h3>Metin ve HTML İçeriği:</h3>
+        <p id="heading">Başlık (Başlangıçta Bu)</p>
+        <p id="paragraph">Paragraf (Başlangıçta Bu)</p>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // .val() ile form elemanlarının değerini almak ve değiştirmek
+        $("#getValButton").click(function () {
+          var username = $("#username").val(); // Input değerini alır
+          var color = $("#color").val(); // Select kutusunun değerini alır
+          alert("Kullanıcı Adı: " + username + "\nSeçilen Renk: " + color);
+        });
+
+        // .attr() ile HTML etiketlerinin attribute'larını almak
+        $("#getAttrButton").click(function () {
+          var inputID = $("#username").attr("id"); // Input'un 'id' atributunu alır
+          var selectName = $("#color").attr("name"); // Select'in 'name' atributunu alır
+          alert(
+            "Kullanıcı Adı Input ID: " +
+              inputID +
+              "\nRenk Select Name: " +
+              selectName
+          );
+        });
+
+        // .text() ile metin içeriğini almak ve değiştirmek
+        $("#getTextButton").click(function () {
+          var headingText = $("#heading").text(); // Başlık metnini alır
+          var paragraphText = $("#paragraph").text(); // Paragraf metnini alır
+          alert(
+            "Başlık Metni: " +
+              headingText +
+              "\nParagraf Metni: " +
+              paragraphText
+          );
+          $("#heading").text("Başlık text() ile değiştirildi!"); // Başlık metnini değiştirir
+          $("#paragraph").text("Paragraf text() ile değiştirildi!"); // Paragraf metnini değiştirir
+        });
+
+        // .html() ile HTML içeriğini almak ve değiştirmek
+        $("#getHTMLButton").click(function () {
+          var headingHTML = $("#heading").html(); // Başlık HTML içeriğini alır
+          var paragraphHTML = $("#paragraph").html(); // Paragraf HTML içeriğini alır
+          alert(
+            "Başlık HTML: " + headingHTML + "\nParagraf HTML: " + paragraphHTML
+          );
+          $("#heading").html(
+            "<strong>Başlık html() ile değiştirildi!</strong>"
+          ); // Başlık HTML içeriğini değiştirir
+          $("#paragraph").html(
+            "Paragraf <em>html()</em> ile <u>değiştirildi!</u>"
+          ); // Paragraf HTML içeriğini değiştirir
+        });
+      });
+    </script>
+  </body>
+</html>

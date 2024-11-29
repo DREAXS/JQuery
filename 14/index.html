@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|14</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 30px;
+      }
+      .content-box {
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #bdc3c7;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      .box {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ecf0f1;
+        border: 1px solid #bdc3c7;
+      }
+      .highlight {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .hidden {
+        display: none;
+      }
+      .blue-text {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      jQuery .remove(), .empty(), .addClass(), .removeClass(), .toggleClass(),
+      .css() Kullanımı
+    </h1>
+
+    <div class="container">
+      <button id="removeButton">remove() ile Eleman Kaldır</button>
+      <button id="emptyButton">empty() ile İçeriği Temizle</button>
+      <button id="addClassButton">addClass() ile Sınıf Ekle</button>
+      <button id="removeClassButton">removeClass() ile Sınıf Kaldır</button>
+      <button id="toggleClassButton">toggleClass() ile Sınıf Değiştir</button>
+      <button id="cssButton">css() ile Stil Değiştir</button>
+    </div>
+
+    <div class="content-box">
+      <h2>Örnek Box'lar:</h2>
+      <div class="box" id="box1">
+        <p>Box 1</p>
+        <p class="highlight">Bu box'ta highlight sınıfı var.</p>
+      </div>
+      <div class="box" id="box2">
+        <p>Box 2</p>
+        <p>Bu box normal.</p>
+      </div>
+      <div class="box hidden" id="box3">
+        <p>Box 3 (Başlangıçta gizli)</p>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // .remove() ile eleman kaldırma
+        $("#removeButton").click(function () {
+          $("#box1").remove(); // Box 1'i DOM'dan tamamen kaldırır
+        });
+
+        // .empty() ile içeriği temizleme
+        $("#emptyButton").click(function () {
+          $("#box2").empty(); // Box 2'nin içeriğini temizler (box2 DOM'da kalır, içeriği kaybolur)
+        });
+
+        // .addClass() ile sınıf ekleme
+        $("#addClassButton").click(function () {
+          $("#box2").addClass("highlight"); // Box 2'ye highlight sınıfını ekler
+        });
+
+        // .removeClass() ile sınıf kaldırma
+        $("#removeClassButton").click(function () {
+          $("#box2").removeClass("highlight"); // Box 2'den highlight sınıfını kaldırır
+        });
+
+        // .toggleClass() ile sınıf ekleyip çıkarma
+        $("#toggleClassButton").click(function () {
+          $("#box2").toggleClass("highlight"); // Box 2'ye highlight sınıfını ekler veya kaldırır
+        });
+
+        // .css() ile stil değiştirme
+        $("#cssButton").click(function () {
+          $("#box2").css("background-color", "#9b59b6"); // Box 2'nin arka plan rengini mor yapar
+        });
+      });
+    </script>
+  </body>
+</html>

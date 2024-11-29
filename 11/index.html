@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|11</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 20px;
+      }
+      #domInfo {
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      .content-box {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ecf0f1;
+        border: 1px solid #bdc3c7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM Yapısı ve .text() ile .html() Farkları</h1>
+
+    <div class="container">
+      <button id="changeTextButton">Metni Değiştir (text())</button>
+      <button id="changeHTMLButton">HTML'yi Değiştir (html())</button>
+      <button id="getTextButton">Metni Göster (text())</button>
+      <button id="getHTMLButton">HTML'yi Göster (html())</button>
+    </div>
+
+    <div class="content-box">
+      <h2 id="heading">Başlık (Başlangıçta Bu)</h2>
+      <p id="paragraph">
+        Bu paragraf, jQuery ile değiştirilecek veya okunacaktır.
+      </p>
+    </div>
+
+    <div id="domInfo">
+      <h3>DOM Yapısını Göster:</h3>
+      <pre id="domOutput"></pre>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // .text() ile metin değiştiriliyor
+        $("#changeTextButton").click(function () {
+          $("#heading").text("Başlık Değiştirildi!"); // Yalnızca metni değiştirir
+          $("#paragraph").text(
+            "Paragraf metni de text() kullanılarak değiştirildi!"
+          );
+        });
+
+        // .html() ile HTML içeriği değiştiriliyor
+        $("#changeHTMLButton").click(function () {
+          $("#heading").html("<strong>Başlık HTML ile değiştirildi!</strong>"); // HTML etiketlerini işler
+          $("#paragraph").html(
+            "Paragraf <em>HTML</em> ile <u>değiştirildi</u>!"
+          );
+        });
+
+        // .text() ile metni alıyoruz
+        $("#getTextButton").click(function () {
+          var headingText = $("#heading").text();
+          var paragraphText = $("#paragraph").text();
+          alert(
+            "Başlık Metni: " +
+              headingText +
+              "\nParagraf Metni: " +
+              paragraphText
+          );
+        });
+
+        // .html() ile HTML içeriğini alıyoruz
+        $("#getHTMLButton").click(function () {
+          var headingHTML = $("#heading").html();
+          var paragraphHTML = $("#paragraph").html();
+          alert(
+            "Başlık HTML: " + headingHTML + "\nParagraf HTML: " + paragraphHTML
+          );
+        });
+
+        // DOM yapısını ve içerikleri gösteriyoruz
+        function showDOM() {
+          var domStructure = document.documentElement.outerHTML; // Tüm DOM yapısını alır
+          $("#domOutput").text(domStructure); // DOM yapısını pre içinde gösterir
+        }
+
+        // Sayfa yüklendiğinde DOM yapısını göster
+        showDOM();
+      });
+    </script>
+  </body>
+</html>

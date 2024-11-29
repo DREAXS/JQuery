@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|13</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 30px;
+      }
+      .content-box {
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #bdc3c7;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      .list {
+        margin-top: 20px;
+        padding: 10px;
+        list-style-type: none;
+      }
+      .list li {
+        background-color: #ecf0f1;
+        padding: 8px;
+        margin-bottom: 5px;
+        border: 1px solid #bdc3c7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery .append(), .prepend(), .after(), .before() Kullanımı</h1>
+
+    <div class="container">
+      <button id="appendButton">append() ile Eleman Ekle</button>
+      <button id="prependButton">prepend() ile Eleman Ekle</button>
+      <button id="afterButton">after() ile Eleman Ekle</button>
+      <button id="beforeButton">before() ile Eleman Ekle</button>
+    </div>
+
+    <div class="content-box">
+      <h2>HTML Liste:</h2>
+      <ul class="list" id="itemList">
+        <li>Öğe 1</li>
+        <li>Öğe 2</li>
+        <li>Öğe 3</li>
+      </ul>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // append() ile eleman ekleme
+        $("#appendButton").click(function () {
+          $("#itemList").append("<li>Yeni Öğe (append)</li>"); // Sonuna yeni öğe ekler
+        });
+
+        // prepend() ile eleman ekleme
+        $("#prependButton").click(function () {
+          $("#itemList").prepend("<li>Yeni Öğe (prepend)</li>"); // Başına yeni öğe ekler
+        });
+
+        // after() ile eleman ekleme
+        $("#afterButton").click(function () {
+          $("#itemList li:first").after("<li>Yeni Öğe (after)</li>"); // İlk öğenin sonrasına yeni öğe ekler
+        });
+
+        // before() ile eleman ekleme
+        $("#beforeButton").click(function () {
+          $("#itemList li:last").before("<li>Yeni Öğe (before)</li>"); // Son öğenin öncesine yeni öğe ekler
+        });
+      });
+    </script>
+  </body>
+</html>
