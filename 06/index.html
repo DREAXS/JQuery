@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|06</title>
+    <!-- jQuery kütüphanesinin projeye dahil edilmesi -->
+    <script src="../00/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Sayfa başlığı ve metinler -->
+    <h2>Jquery</h2>
+    <p>Jquery ile event kullanımı</p>
+    <p>Jquery ile event özellikleri</p>
+    <!-- GitHub linki (boş href ile) -->
+    <a href="https://github.com/DREAXS"></a>
+
+    <!-- Bir div öğesi, içinde bir paragraf ve buton barındırıyor -->
+    <div
+      style="
+        background-color: cadetblue;
+        height: 300px;
+        width: 500px;
+        padding: 10px;
+        border: 1px solid black;
+      "
+    >
+      <!-- Lorem ipsum metni -->
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas omnis
+        magni optio pariatur mollitia aut perferendis. Nemo accusamus mollitia,
+        asperiores provident unde ipsum alias vitae dicta soluta, accusantium
+        labore eaque sit earum blanditiis in, necessitatibus minus. Expedita
+        provident, alias minima voluptas velit, officiis, eaque illum deleniti
+        pariatur doloremque nulla ullam explicabo inventore? Et, velit aliquid
+        ab totam repudiandae neque porro possimus laborum beatae, commodi amet.
+        Temporibus tenetur sint voluptatum explicabo officiis aperiam tempore.
+        Molestias sed sint voluptatibus cupiditate nesciunt est exercitationem
+        ad laudantium aut cumque consequuntur libero delectus minima facilis
+        laborum voluptate illum iure eligendi dolore, officiis consectetur amet.
+        Facere?
+      </p>
+      <!-- Buton, tıklanabilir bir öğe -->
+      <button type="button">Tıkla</button>
+    </div>
+
+    <!-- 
+      Aşağıdaki script blokları, çeşitli jQuery olayları ve özellikleriyle ilgili örneklerdir. 
+      Şu an yorum satırına alındığı için çalışmazlar.
+
+      1. **Event.currentTarget**:
+          - Hedeflenen öğeye tıklanıldığında, hangi öğenin üzerinde işlem yapıldığını kontrol etmek için kullanılır.
+          - event.currentTarget === this, tıklanan öğenin doğru olup olmadığını kontrol eder.
+    -->
+    <!-- <script>
+      $(function () {
+        $("h2,p").click(function (event) {
+          alert(event.currentTarget === this);
+        });
+      });
+    </script> -->
+
+    <!--
+      2. **event.data**:
+          - `each()` fonksiyonu ile her p etiketine bir `click` olay dinleyicisi ekleniyor.
+          - `event.data.x` kullanılarak, her p öğesinin indeks numarasını taşıyan bir veri kullanılıyor.
+          - Bu veri, tıklanan öğe ile birlikte bir uyarı mesajı olarak gösterilir.
+    -->
+    <!-- <script>
+      $(function () {
+        $("p").each(function (i) {
+          $(this).on("click", { x: i }, function (event) {
+            alert($(this).index() + " .paragraf + " + event.data.x + " veri");
+          });
+        });
+      });
+    </script> -->
+
+    <!--
+      3. **Event Delegation**:
+         - Bu örnekte, div içinde bulunan button öğesinin tıklanması olayını dinlemek için **event delegation** kullanılıyor.
+          - Butona tıklandığında, event.target yani tıklanan öğe değil, div öğesinin arka plan rengi değiştirilir.
+    -->
+    <!-- <script>
+      $(function () {
+        $("div").on("click", "button", function (event) {
+          $(event.delegateTarget).css("background-color", "gray");
+        });
+      });
+    </script> -->
+
+    <!-- 
+      4. **event.preventDefault()**:
+          - Aşağıdaki kodda, `a` öğesine tıklandığında, varsayılan davranışı (yani sayfanın GitHub linkine gitmesini) engellemek için `event.preventDefault()` kullanılır.
+          - `alert(event.isDefaultPrevented)` ile, `preventDefault` fonksiyonunun etkin olup olmadığı kontrol edilir.
+    -->
+    <!-- <script>
+      $(function () {
+        $("a").click(function (event) {
+          event.preventDefault();  // Varsayılan davranışı engelle
+          alert(event.isDefaultPrevented); // true döner, çünkü preventDefault çağrıldı
+        });
+      });
+    </script> -->
+
+    <!-- 
+      5. **event.stopPropagation()**:
+          - Bu kodda, `div` öğesine tıklanarak, olayın yayılmasını engellemeye çalışıyoruz.
+          - `event.stopPropagation()` ile olayın daha fazla yayılmasını engelliyoruz.
+          - `alert(event.isPropagationStopped())` ile olayın yayılmasının durdurulup durdurulmadığı kontrol edilir.
+    -->
+    <!-- <script>
+      $(function () {
+        $("div").click(function (event) {
+          event.stopPropagation(); // Olayın yayılmasını engelle
+          alert(event.isPropagationStopped()); // true döner, çünkü stopPropagation çağrıldı
+        });
+      });
+    </script> -->
+
+    <!-- 
+      6. **Custom Events (Özel Olaylar)**:
+          - `custom.sName` adında özel bir olay tanımlanmış.
+          - Bir p etiketine tıklandığında, `custom.sName` olayı tetiklenir ve ilgili olayın `namespace`'i (ad alanı) gösterilir.
+    -->
+    <!-- <script>
+      $(function () {
+        $("p").on("custom.sName", function (event) {
+          alert(event.namespace); // "sName" gösterilir
+        });
+        $("p").click(function (event) {
+          $(this).trigger("custom.sName"); // custom.sName olayını tetikle
+        });
+      });
+    </script> -->
+
+    <!-- 
+      7. **event.stopImmediatePropagation()**:
+          - Bu örnekte, bir div öğesine tıklandığında, ilk olay tetiklendikten sonra, `event.stopImmediatePropagation()` fonksiyonu kullanılarak olayın daha fazla işlenmesi engelleniyor.
+          - Bu, aynı öğeye birden fazla olay dinleyicisi varsa, sadece ilk dinleyicinin çalışmasını sağlar.
+    -->
+    <!-- <script>
+      $(function () {
+        $("div").click(function (event) {
+          alert("İlk Alert Çalıştı");
+          event.stopImmediatePropagation(); // Diğer olayları engelle
+        });
+        $("div").click(function (event) {
+          alert("İkinci Alert Çalıştı");
+        });
+        $("div").click(function (event) {
+          alert("Üçüncü Alert Çalıştı");
+        });
+      });
+    </script> -->
+  </body>
+</html>
