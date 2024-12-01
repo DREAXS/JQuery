@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|18</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      #userList {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+      }
+      li {
+        list-style-type: none;
+        padding: 5px;
+        background-color: #e0e0e0;
+        margin-bottom: 5px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery GET ve POST Metodları</h1>
+
+    <!-- Kullanıcı Ekleme Formu -->
+    <h3>Kullanıcı Ekle</h3>
+    <form id="userForm">
+      <label for="username">Kullanıcı Adı: </label>
+      <input type="text" id="username" name="username" required />
+      <button type="submit">Ekle</button>
+    </form>
+
+    <!-- Kullanıcı Listesi -->
+    <h3>Kullanıcı Listesi</h3>
+    <ul id="userList"></ul>
+
+    <script>
+      // Örnek kullanıcı verisi (GET isteğiyle alınacak)
+      let users = [
+        { username: "Ahmet" },
+        { username: "Mehmet" },
+        { username: "Ayşe" },
+      ];
+
+      // GET Metodu - Kullanıcıları Al
+      function getUsers() {
+        // Burada gerçekte sunucudan veri alıyoruz gibi davranıyoruz
+        $.get("dummy-url", function (data) {
+          // Gelen veriyi listeye ekle
+          $("#userList").empty(); // Önceki verileri temizle
+          users.forEach(function (user) {
+            $("#userList").append("<li>" + user.username + "</li>");
+          });
+        });
+      }
+
+      // POST Metodu - Yeni Kullanıcı Ekleme
+      $("#userForm").on("submit", function (event) {
+        event.preventDefault(); // Formun normal şekilde gönderilmesini engelle
+
+        var username = $("#username").val();
+
+        // POST isteği ile kullanıcıyı listeye ekle
+        if (username) {
+          users.push({ username: username }); // Yeni kullanıcıyı ekle
+
+          // Simülasyon: Başarı mesajı göster
+          alert("Kullanıcı başarıyla eklendi!");
+
+          // Kullanıcıları tekrar listele
+          getUsers();
+
+          // Formu temizle
+          $("#username").val("");
+        }
+      });
+
+      // Sayfa yüklendiğinde kullanıcıları al
+      $(document).ready(function () {
+        getUsers();
+      });
+    </script>
+  </body>
+</html>

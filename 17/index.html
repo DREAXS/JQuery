@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|17</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      #content {
+        width: 100%;
+        padding: 20px;
+        margin-top: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery `load()` Fonksiyonu Örneği</h1>
+
+    <!-- Buton ile içerik yüklenmesini tetikleyen alan -->
+    <button id="loadContentBtn">İçeriği Yükle</button>
+
+    <!-- Yüklenen içerik buraya gelecek -->
+    <div id="content">
+      <p>İçerik burada görünecek.</p>
+    </div>
+
+    <script>
+      // Butona tıklanınca içerik yükleme işlemi başlatılır
+      $("#loadContentBtn").click(function () {
+        $("#content").load("content.html"); // content.html dosyasından içerik yükle
+      });
+    </script>
+  </body>
+</html>

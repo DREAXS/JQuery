@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|16</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      /* Genel stil düzenlemeleri */
+      .container {
+        padding: 20px;
+        background-color: #f0f0f0;
+        margin: 10px;
+        border: 2px solid #3498db;
+      }
+      .item {
+        padding: 10px;
+        background-color: #f1c40f;
+        margin: 5px;
+        border: 1px solid #2c3e50;
+      }
+      .highlight {
+        background-color: #e74c3c !important;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #ecf0f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">Öğe 1</div>
+      <div class="item">Öğe 2</div>
+      <div class="item">Öğe 3</div>
+      <div class="item">Öğe 4</div>
+    </div>
+
+    <button id="prev">Önceki Öğeyi Seç</button>
+    <button id="next">Sonraki Öğeyi Seç</button>
+    <button id="siblings">Kardeş Öğeleri Seç</button>
+    <button id="parent">Ebeveyn Öğeyi Seç</button>
+    <button id="children">Çocuk Öğeleri Seç</button>
+    <button id="find">Belirli Öğeyi Seç</button>
+
+    <div id="output"></div>
+
+    <script>
+      $(document).ready(function () {
+        // Önceki öğeyi seçmek için
+        $("#prev").click(function () {
+          var previousItem = $(".item").last().prev(); // Son öğenin önceki öğesini seç
+          previousItem.addClass("highlight"); // Önceki öğeyi vurgula
+          $("#output").text(
+            "Son öğe, önceki öğeye geçti: " + previousItem.text()
+          );
+        });
+
+        // Sonraki öğeyi seçmek için
+        $("#next").click(function () {
+          var nextItem = $(".item").first().next(); // İlk öğenin sonraki öğesini seç
+          nextItem.addClass("highlight"); // Sonraki öğeyi vurgula
+          $("#output").text("İlk öğe, sonraki öğeye geçti: " + nextItem.text());
+        });
+
+        // Kardeş öğeleri seçmek için
+        $("#siblings").click(function () {
+          var siblings = $(".item").eq(1).siblings(); // İkinci öğenin kardeşlerini seç
+          siblings.addClass("highlight"); // Kardeş öğeleri vurgula
+          $("#output").text("İkinci öğenin kardeşleri seçildi.");
+        });
+
+        // Ebeveyn öğeyi seçmek için
+        $("#parent").click(function () {
+          var parent = $(".item").first().parent(); // İlk öğenin ebeveynini seç
+          parent.addClass("highlight"); // Ebeveyn öğeyi vurgula
+          $("#output").text("İlk öğenin ebeveyni seçildi.");
+        });
+
+        // Çocuk öğeleri seçmek için
+        $("#children").click(function () {
+          var children = $(".container").children(); // .container öğesinin tüm çocuklarını seç
+          children.addClass("highlight"); // Çocuk öğeleri vurgula
+          $("#output").text("Tüm çocuk öğeler seçildi.");
+        });
+
+        // Belirli öğeyi seçmek için
+        $("#find").click(function () {
+          var foundItem = $(".container").find(".item"); // .container içindeki .item öğelerini bul
+          foundItem.addClass("highlight"); // Bulunan öğeleri vurgula
+          $("#output").text(".container içindeki tüm .item öğeleri seçildi.");
+        });
+      });
+    </script>
+  </body>
+</html>

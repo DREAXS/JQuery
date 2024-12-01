@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|19</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      #content {
+        padding: 20px;
+        margin-top: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery AJAXSetup ve GetScript Örnekleri</h1>
+
+    <button id="loadScriptBtn">Dış JavaScript Dosyasını Yükle</button>
+
+    <div id="content">
+      <p>İçerik burada yüklenecek.</p>
+    </div>
+
+    <script>
+      // 1. Global AJAX Ayarları Yapma - $.ajaxSetup()
+      $.ajaxSetup({
+        url: "dummy-url", // Global URL, istekler bu URL'yi kullanacak
+        type: "GET", // Global method, tüm istekler GET olacak
+        dataType: "json", // Global veri formatı, json
+        timeout: 5000, // Global timeout, 5 saniye
+        beforeSend: function () {
+          // Global isteğe başlamadan önce yapılacak işlemler
+          console.log("AJAX isteği gönderilmeye hazırlanıyor...");
+        },
+        complete: function () {
+          // Global istek tamamlandığında yapılacak işlemler
+          console.log("AJAX isteği tamamlandı.");
+        },
+      });
+
+      // 2. AJAX ile veri çekme
+      function fetchData() {
+        $.ajax({
+          data: { id: 123 }, // Parametre gönder
+          success: function (data) {
+            $("#content").html(
+              "<p>AJAX ile veri alındı: " + JSON.stringify(data) + "</p>"
+            );
+          },
+          error: function () {
+            $("#content").html("<p>Veri alınırken hata oluştu!</p>");
+          },
+        });
+      }
+
+      // 3. Dış JavaScript Dosyasını Yüklemek - $.getScript()
+      $("#loadScriptBtn").click(function () {
+        $.getScript(
+          "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js",
+          function () {
+            console.log("jQuery UI kütüphanesi başarıyla yüklendi!");
+
+            // jQuery UI ile basit bir efekt ekleyelim
+            $("#content").effect("bounce", { times: 3 }, 300);
+          }
+        );
+      });
+
+      // Sayfa yüklendiğinde veri çekme işlemi
+      $(document).ready(function () {
+        fetchData(); // Global ayarlarla AJAX isteği gönder
+      });
+    </script>
+  </body>
+</html>

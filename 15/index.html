@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery|15</title>
+    <script src="../00/jquery-3.7.1.min.js"></script>
+    <style>
+      /* Basit stil tanımlamaları */
+      .box {
+        width: 300px;
+        height: 200px;
+        padding: 20px;
+        border: 10px solid #3498db;
+        margin: 30px;
+        background-color: #f0f0f0;
+        box-sizing: border-box; /* outerWidth/outerHeight için önemli */
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f1c40f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box">Bu kutunun boyutları:</div>
+
+    <!-- Butonlar -->
+    <button id="btnWidth">width</button>
+    <button id="btnHeight">height</button>
+    <button id="btnInnerWidth">innerWidth</button>
+    <button id="btnInnerHeight">innerHeight</button>
+    <button id="btnOuterWidth">outerWidth</button>
+    <button id="btnOuterHeight">outerHeight</button>
+
+    <!-- Sonuçların gösterileceği alan -->
+    <div id="output"></div>
+
+    <script>
+      $(document).ready(function () {
+        // width butonuna tıklama
+        $("#btnWidth").click(function () {
+          var width = $("#box").width(); // İçerik boyutu (padding hariç)
+          $("#output").html("<strong>width:</strong> " + width + "px");
+        });
+
+        // height butonuna tıklama
+        $("#btnHeight").click(function () {
+          var height = $("#box").height(); // İçerik boyutu (padding hariç)
+          $("#output").html("<strong>height:</strong> " + height + "px");
+        });
+
+        // innerWidth butonuna tıklama
+        $("#btnInnerWidth").click(function () {
+          var innerWidth = $("#box").innerWidth(); // İçerik + padding
+          $("#output").html(
+            "<strong>innerWidth:</strong> " + innerWidth + "px"
+          );
+        });
+
+        // innerHeight butonuna tıklama
+        $("#btnInnerHeight").click(function () {
+          var innerHeight = $("#box").innerHeight(); // İçerik + padding
+          $("#output").html(
+            "<strong>innerHeight:</strong> " + innerHeight + "px"
+          );
+        });
+
+        // outerWidth butonuna tıklama
+        $("#btnOuterWidth").click(function () {
+          var outerWidth = $("#box").outerWidth(); // İçerik + padding + border
+          $("#output").html(
+            "<strong>outerWidth:</strong> " + outerWidth + "px"
+          );
+        });
+
+        // outerHeight butonuna tıklama
+        $("#btnOuterHeight").click(function () {
+          var outerHeight = $("#box").outerHeight(); // İçerik + padding + border
+          $("#output").html(
+            "<strong>outerHeight:</strong> " + outerHeight + "px"
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
